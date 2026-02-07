@@ -8,18 +8,15 @@ public static class Calculator
        switch(operation){
               //add
               case "+":
-                    return = num1 + num2; 
-                break;
+                    return num1 + num2; 
                 
               //subtract
               case "-":
-                    return = num1 - num2;
-                break;
+                    return num1 - num2;
                 
               //multiply
               case "*":
-                    return = num1 * num2;
-                break;
+                    return num1 * num2;
                 
               //divide
               case "/":
@@ -31,8 +28,7 @@ public static class Calculator
                 else{
                     return(double) num1 / num2;
                 }
-                break;
-                
+            
               //modulo
                 case "%":
                 if(num2 == 0){  
@@ -40,18 +36,17 @@ public static class Calculator
                     return null;
                 }
                 else{
-                    return = num1 % num2;
+                    return num1 % num2;
                 }
-                break;
+
                 
               //exit     
               case "=":
                     Environment.Exit(0);
                     return 0;
-                break;
             default:
                 Console.WriteLine("Invalid Operarion Used, Please Try againn");
                 return null;
+       }        
     }
 }
-
