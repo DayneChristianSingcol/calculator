@@ -1,47 +1,61 @@
 using System;
 
-class Program
 {
-    // Display the calculator to the user
-    public static void DisplayCalculator()
+    class Program
     {
-        while (true)
+        static void Main(string[] args)
         {
-            // Input for first number
-            Console.WriteLine("Enter first number: ");
-            if (!int.TryParse(Console.ReadLine(), out int num1))
+            while (true) 
             {
-                Console.WriteLine("Invalid input. Please enter a valid integer.");
-                continue;
-            }
+                
+                Console.Write("Enter the first integer: ");
+                if (!int.TryParse(Console.ReadLine(), out int num1))
+                {
+                    Console.WriteLine("Invalid input. Please enter a whole number.");
+                    continue;
+                }
 
-            // Input for second number
-            Console.WriteLine("Enter second number: ");
-            if (!int.TryParse(Console.ReadLine(), out int num2))
-            {
-                Console.WriteLine("Invalid input. Please enter a valid integer.");
-                continue;
-            }
+                
+                Console.Write("Enter the second integer: ");
+                if (!int.TryParse(Console.ReadLine(), out int num2))
+                {
+                    Console.WriteLine("Invalid input. Please enter a whole number.");
+                    continue;
+                }
 
-            // Input for operation
-            Console.WriteLine("Enter operation (+, -, *, /, %, = to exit): ");
-            string operation = Console.ReadLine().Trim();
+                string? operation;
+                while (true) 
+                {
+                    Console.Write("Choose an operation (+, -, *, /, %, = to exit): ");
+                    operation = Console.ReadLine();
 
-            // Call Calculate method to perform the operation
-            double? result = Calculator.Calculate(num1, num2, operation);
+                    if (operation == "+" || operation == "-" || operation == "*" ||
+                        operation == "/" || operation == "%" || operation == "=")
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect Operation Used, please try again.");
+                    }
+                }
 
-            // Display result if valid
-            if (result.HasValue)
-            {
-                Console.WriteLine($"Result: {result.Value}");
+                if (operation == "=")
+                {
+                    Console.WriteLine("Exiting calculator. Goodbye!");
+                    break;
+                }
+
+               
+                var result = Calculator.Calculate(num1, num2, operation);
+
+                if (result != null)
+                {
+                    Console.WriteLine($"Result: {result}");
+                }
+
+                Console.WriteLine(); 
             }
         }
     }
-
-    // Main method to start the program
-    public static void Main(string[] args)
-    {
-        DisplayCalculator();
-    }
 }
-    
